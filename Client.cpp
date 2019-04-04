@@ -1,6 +1,6 @@
 #include "Client.h"
 #include <iostream>
-#include "Book.h"
+//#include "Book.h"
 using namespace std;
 Client::Client()
 {
@@ -53,7 +53,7 @@ void Client::Logout(string, string)
     return;
 }
 
-Book Client::borrowBook(Book books[], string title)
+/*Book Client::borrowBook(Book books[], string title)
 {
     for (int i = 0; i < 100; i++)
     {
@@ -63,18 +63,23 @@ Book Client::borrowBook(Book books[], string title)
         }
     }
 }
+*/
 
-Book Client::returnBook(Book myBook)
+/*Book Client::returnBook(Book myBook)
 {
-
+    return myBook;
 }
+*/
 
-void Client::examineLibrary()
+
+/*string Client::searchBook(Book books[], string _title)
 {
-
+    for (int i = 0; i < 100; i++)
+    {
+        if (books[i].getTitle() == _title)
+        {
+            books[i].displayBook();
+        }
+    }
 }
-
-string Client::searchBook(string _title)
-{
-
-}
+*/
