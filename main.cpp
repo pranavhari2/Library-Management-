@@ -1,23 +1,24 @@
 #include <iostream>
 #include <fstream>
-#include <Library.h>
+#include "Library.h"
+#include "Client.h"
+#include <windows.h>
 using namespace std;
 
 Book books[100000];
 
 int main()
 {
+  Library library;
+  cout << "                                 Welcome to the Library" << endl << endl;
+  system("PAUSE");
+  system("CLS");
 
-  Book book1("SS" , "SSS", "SSSSSS", 10);
-  book1.displayBook();
-  book1 = books[0];
+  library.ClientMenu();
 
-  ofstream myfile;
-  myfile.open ("Library Database.txt");
-  myfile << book1.getTitle();
-  myfile.close();
+
+
+
+
+
   return 0;
-
-
-}
-
