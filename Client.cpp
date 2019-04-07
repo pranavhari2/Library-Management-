@@ -40,11 +40,18 @@ void Client::setPassword(string _password)
     return;
 }
 
-void Client::Login(string _name, string _password)
+bool Client::Login(string _name, string _password)
 {
     if ((_name == name) && (_password == password))
     {
-        cout << "Correct Login" << endl;
+        cout << "Correct Login" << endl << endl;
+        return 1;
+    }
+    else
+    {
+        system("CLS");
+        cout << "Wrong Name or Password entered." << endl;
+        return 0;
     }
 }
 
@@ -52,6 +59,7 @@ void Client::Logout(string, string)
 {
     return;
 }
+
 
 /*Book Client::borrowBook(Book books[], string title)
 {
@@ -83,3 +91,4 @@ void Client::Logout(string, string)
     }
 }
 */
+
