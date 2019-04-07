@@ -14,12 +14,14 @@ class Client
         string getPassword();
         void setName(string);
         void setPassword(string);
-        void Login(string, string);
+        bool Login(string, string);
         void Logout(string, string);
-        Book borrowBook(Book[], string);
-        Book returnBook(Book);
+        //Book borrowBook(Book[], string);
+        //Book returnBook(Book);
         void examineLibrary();
         string searchBook(string);
+        Book clientBooks[10000];
+       // void displayClient();
 
     protected:
 
@@ -30,3 +32,4 @@ class Client
 };
 
 #endif // CLIENT_H
+
