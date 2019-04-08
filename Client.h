@@ -16,8 +16,8 @@ class Client
         void setPassword(string);
         bool Login(string, string);
         void Logout(string, string);
-        //Book borrowBook(Book[], string);
-        //Book returnBook(Book);
+        Book borrowBook(Book[], string);
+        Book returnBook(Book, string);
         void examineLibrary();
         string searchBook(string);
         Book clientBooks[10000];
@@ -32,4 +32,3 @@ class Client
 };
 
 #endif // CLIENT_H
-

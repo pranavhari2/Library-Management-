@@ -61,34 +61,31 @@ void Client::Logout(string, string)
 }
 
 
-/*Book Client::borrowBook(Book books[], string title)
+Book Client::borrowBook(Book books[], string title)
 {
     for (int i = 0; i < 100; i++)
     {
         if (books[i].getTitle() == title)
         {
-            return books[i];
+            books[i].borrowed = 1;
         }
     }
 }
 */
 
-/*Book Client::returnBook(Book myBook)
-{
-    return myBook;
-}
-*/
-
-
-/*string Client::searchBook(Book books[], string _title)
+Book Client::returnBook(Book books[])
 {
     for (int i = 0; i < 100; i++)
     {
-        if (books[i].getTitle() == _title)
+        if (books[i].getTitle() == title)
         {
-            books[i].displayBook();
+            books[i].returned = 1;
+            books[i].borrowed = 0;
         }
     }
 }
-*/
+
+
+
+
 

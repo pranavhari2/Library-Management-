@@ -10,7 +10,7 @@ class Library
         Library();
         virtual ~Library();
         void AddBook(/*Book[]*/);
-        void DeleteBook(Book[]);
+        void DeleteBook(string);
         void ModifyBook(Book[]);
         void uploadBooks(Book);
         void ClientMenu();

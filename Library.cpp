@@ -68,13 +68,24 @@ void Library::AddBook(/*Book book*/)
 
   }
 
-void Library::DeleteBook(Book books[])
+void Library::DeleteBook(string _title);
 {
 
 }
 void Library::ModifyBook(Book books[])
 {
 
+}
+
+string Library::searchBook(Book books[], string _title)
+{
+    for (int i = 0; i < 100; i++)
+    {
+        if (books[i].getTitle() == _title)
+        {
+            books[i].displayBook();
+        }
+    }
 }
 
 void Library::ClientMenu()
@@ -114,6 +125,11 @@ void Library::ClientMenu()
   }
   }
   */
+  cout << "\n";
+  cout << "1. Borrow       " << "2. Return       " << "3. Examine Library       " << "Search for a Book" << endl;
+  cin >> option;
+
+
   AddBook();
 
 
