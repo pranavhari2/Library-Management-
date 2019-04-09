@@ -19,6 +19,7 @@ Book::Book(string _title, string _author, string _description, int _numOfpages)
     numOfPages = _numOfpages;
     borrowed = 0;
     returned = 0;
+    return;
 }
 
 void Book::setTitle(string _title)

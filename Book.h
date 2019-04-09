@@ -30,6 +30,7 @@ class Book
         string author;
         string description;
         int numOfPages;
+        int size;
 
 };
 

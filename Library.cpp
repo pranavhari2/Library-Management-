@@ -1,4 +1,3 @@
-
 #include "Library.h"
 #include "Client.h"
 #include "Book.h"
@@ -18,13 +17,15 @@ Library::~Library()
 }
 
 // Uploads edited book list to txt file and replaces the original with the new one.
-void Library::uploadBooks(Book book)
+void Library::uploadBooks(Book books[])
 {
     ofstream myfile;
     myfile.open("Library Database.txt" , ios::out | ios::app);
+    for (int i = 0; i < 100; i++)
+{
     if (myfile.is_open())
     {
-        myfile << "1" << "," << book.getTitle() << "," << book.getAuthor() << "," << book.getDescription() << "," << book.getNumofPages() << endl;
+        myfile << "," << books[i].getTitle() << "," << books[i].getAuthor() << "," << books[i].getDescription() << "," << books[i].getNumofPages() << ", " << "0" << ", " << "0" << endl;
         myfile.close();
     }
     else
@@ -32,52 +33,52 @@ void Library::uploadBooks(Book book)
         cout << "Could not open file." << endl;
     }
 }
+}
 
-void Library::AddBook(/*Book book*/)
+//===================================================
+void Library::AddBook(Book books[], int _size)
 {
-    string title;
-    string auth;
-    string desc;
-    int pages;
+string title;
+string auth;
+string desc;
+int pages;
 
+  cin.ignore();
   cout << "Title: ";
-  getline(cin, title);
+  getline(cin,title);
   cout << "Author: ";
   getline(cin, auth);
   cout << "Description (keep it short): ";
   getline(cin, desc);
   cout << "Num of pages: ";
   cin >> pages;
+
   Book book(title, auth, desc, pages);
-
-    uploadBooks(book);
-
-  ifstream file;
-  string line;
-  file.open("Library Database.txt");
-  if (file.is_open())
-  {
-    while ( getline (file,line,',') )
-    {
-        cout << line << endl;
-    }
-    file.close();
-  }
-
-  else cout << "Unable to open file";
+  books[_size] = book;
 
   }
 
-void Library::DeleteBook(string _title);
+//===================================================
+
+void Library::DeleteBook(Book books[], string _title)
 {
+    for (int i = 0; i < 100; i++)
+    {
+        if (books[i].getTitle() == _title)
+        {
 
+        }
+    }
 }
+//===============================================
 void Library::ModifyBook(Book books[])
 {
 
-}
 
-string Library::searchBook(Book books[], string _title)
+
+}
+//===================================================
+void Library::searchBook(Book books[], string _title)
 {
     for (int i = 0; i < 100; i++)
     {
@@ -87,18 +88,20 @@ string Library::searchBook(Book books[], string _title)
         }
     }
 }
+//===================================================
 
 void Library::ClientMenu()
 {
-  /*
+  int option;
+  // Client start menu before performing search and stuff
+
   string name;
   string password;
   bool login;
-
   cout << "                                 Enter New Login Information:" << endl << endl;
-
   cout << "Name: ";
-  cin >> name;
+  cin >> name;cout << "1. Borrow       " << "2. Return       " << "3. Examine Library       " << "4. Search for a Book    " << " Enter anything to logout " << endl;
+  cin >> option;
   cout << "\n";
   cout << "Password: ";
   cin >> password;
@@ -106,35 +109,61 @@ void Library::ClientMenu()
   Client client(name, password);
   cout << "Username: " << client.getName() << endl;
   cout << "Password: " << client.getPassword() << endl;
-
   while(true)
   {
       cout << "                                 Enter Login Information:" << endl << endl;
-
   cout << "Name: ";
   cin >> name;
   cout << "\n";
   cout << "Password: ";
   cin >> password;
   cout << "\n";
-
   login = client.Login(name, password);
+
   if (login == 1)
   {
       break;
   }
   }
-  */
+
   cout << "\n";
-  cout << "1. Borrow       " << "2. Return       " << "3. Examine Library       " << "Search for a Book" << endl;
+  cout << "1. Borrow       " << "2. Return       " << "3. Examine Library       " << "4. Search for a Book    " << " Enter anything to logout " << endl;
   cin >> option;
-
-
-  AddBook();
-
+  if (option == 1)
+  {
+     client.borrowBook();
+  }
+  else if (option == 2)
+  {
+      client.returnBook()
+  }
+  else if (option == 3)
+  {
+      examineLibrary();
+  }
+  else if (option == 4)
+  {
+      searchBook();
+  }
+  else
+  {
+      client.Logout();
+  }
 
   return;
-
 }
 
+void Library::LibrarianMenu()
+{
+  int option;
+  cout << "1. Add a Book       " << "2. Delete a Book     " << "3. Modify a Book" << "4. Logout" << endl;
+  cin >> option;
+  if (option == 1)
 
+      {
+         AddBook(books[], i);
+         i++;
+      }
+
+  }
+}
