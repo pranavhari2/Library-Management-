@@ -14,9 +14,10 @@ class Client
         string getPassword();
         void setName(string);
         void setPassword(string);
-        bool Login(string, string);
-        void Logout();
-
+        bool Login(string, string);//
+        void Logout();//
+        void borrowBook(Book[], string);//
+        void returnBook(Book[], string);//
 
        // void displayClient();
 

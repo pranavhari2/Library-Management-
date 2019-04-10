@@ -36,7 +36,7 @@ void Library::downloadBooks()
 
     for (int i = 0; i < 3; i++)
     {
-        myfile << i+1 << "" << books[i].getTitle() << "" << books[i].getAuthor() << "" << books[i].getDescription() << "" << books[i].getNumofPages() << "" << books[i].borrowed << "" << books[i].returned << endl;
+        myfile << i+1 << endl << books[i].getTitle() << endl << books[i].getAuthor() << endl << books[i].getDescription() << endl << books[i].getNumofPages() << endl << books[i].borrowed << endl << books[i].returned << endl;
 
     }
      myfile.close();
@@ -52,20 +52,20 @@ void Library::uploadBooks()
     string pages;
     string borr;
     string retrn;
+    string line;
 
     ifstream myfile("Library Database.txt" , ios::in | ios::ate);
     if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
     {
-        while(myfile >>  title >> auth >> desc >> pages >> borr >> retrn)
-        {
-            cout  <<  title << auth << desc << pages << borr << retrn;
-        }
-        myfile.close();
-
+      cout << line << '\n';
     }
+    myfile.close();
+  }
 
-
-     myfile.close();
+  else cout << "Unable to open file";
+    myfile.close();
      return;
 }
 
@@ -123,6 +123,7 @@ void Library::DeleteBook(string _title)
         else
         {
             cout << "No Book Found. ";
+            return;
         }
     }
 }
@@ -191,48 +192,45 @@ void Library::searchBook(string val)
 
 void Library::ClientMenu()     // Client start menu before doing anything
 {
+    int option;
 
 
-  int option;
+    string name;
+    string password;
+    bool login;
+    cout << "                                 Enter New Login Information:" << endl << endl;
+    cout << "Name: ";
+    cin >> name;
+    cout << "Password: ";
+    cin >> password;
+    cout << "\n";
+    Client client(name, password);
+    cout << "Username: " << client.getName() << endl;
+    cout << "Password: " << client.getPassword() << endl;
 
+    while(true)    // Repeats Login while right information is not entered
+    {
+        cout << "                                 Enter Login Information:" << endl << endl;
+      cout << "Name: ";
+      cin >> name;
+      cout << "\n";
+      cout << "Password: ";
+      cin >> password;
+      cout << "\n";
 
-  string name;
-  string password;
-  bool login;
-  cout << "                                 Enter New Login Information:" << endl << endl;
-  cout << "Name: ";
-  cin >> name;
-  cout << "Password: ";
-  cin >> password;
-  cout << "\n";
-  Client client(name, password);
-  cout << "Username: " << client.getName() << endl;
-  cout << "Password: " << client.getPassword() << endl;
+      login = client.Login(name, password);
 
-  while(true)    // Repeats Login while right information is not entered
-  {
-      cout << "                                 Enter Login Information:" << endl << endl;
-  cout << "Name: ";
-  cin >> name;
-  cout << "\n";
-  cout << "Password: ";
-  cin >> password;
-  cout << "\n";
-
-  login = client.Login(name, password);
-
-  if (login == 1)
-  {
-      break;
-  }
-  }
+      if (login == 1)
+      {
+          break;
+      }
+    }
 
 //===================================  Menu Starts
     system("CLS");
 
     while(true)
     {
-
 
     cout << "\n";
     cout << "1. Borrow       " << "2. Return       " << "3. Examine Library       " << "4. Search for a Book    " << " Enter anything to logout " << endl;
@@ -298,6 +296,7 @@ void Library::ClientMenu()     // Client start menu before doing anything
     else
     {
         client.Logout();
+        return;
 
     }
 
@@ -314,7 +313,6 @@ void Library::LibrarianMenu()
 
 while(true)
 {
-
   int option;
   cout << "1. Add a Book       " << "2. Delete a Book     " << "3. Modify a Book" << "       4. Logout" << endl << endl;
   cin >> option;
@@ -372,7 +370,7 @@ while(true)
         }
 
     }
-    else
+    else if(option == 4)
     {
     system("CLS");
     return;
@@ -388,7 +386,7 @@ void Library::borrowBook(string val)
     {
         if ((val == books[i].getAuthor()) or (val == books[i].getTitle()))
         {
-            books[i].borrowed = 1;
+            books[i].borrowed = "Yes";
             cout << "Book Borrowed. ";
             return;
         }
@@ -406,8 +404,8 @@ void Library::returnBook(string val)
     {
         if ((val == books[i].getAuthor()) or (val == books[i].getTitle()))
         {
-            books[i].returned = 1;
-            books[i].borrowed = 0;
+            books[i].returned = "Yes";
+            books[i].borrowed = "No";
             cout << "Book Returned. ";
             return;
         }

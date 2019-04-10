@@ -17,8 +17,9 @@ Book::Book(string _title, string _author, string _description, int _numOfpages)
     author = _author;
     description = _description;
     numOfPages = _numOfpages;
-    borrowed = 0;
-    returned = 0;
+    borrowed = "No";
+    returned = "No";
+    return;
 }
 
 void Book::setTitle(string _title)
@@ -39,7 +40,7 @@ void Book::setDescription(string _description)
     return;
 }
 
-void Book::setNumofPages(int _numOfPages)
+void Book::setNumofPages(string _numOfPages)
 {
     numOfPages = _numOfPages;
     return;
@@ -60,7 +61,7 @@ string Book::getDescription()
     return description;
 }
 
-int Book::getNumofPages()
+string Book::getNumofPages()
 {
     return numOfPages;
 }
@@ -70,5 +71,5 @@ void Book::displayBook()
     cout << "Title: " << title << endl;
     cout << "Author: " << author << endl;
     cout << "Description: " << description << endl;
-    cout << "Number of Pages: " << numOfPages << endl << endl;
+    cout << "Number of Pages: " << numOfPages << endl;
 }

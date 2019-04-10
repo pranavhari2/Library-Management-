@@ -9,18 +9,18 @@ class Book
         Book();
         virtual ~Book();
         Book(string, string, string, int);
-       // Book(string, string, string, int, bool, bool);
+        Book(string, string, string, int, bool, bool);
         string getTitle();
         string getAuthor();
         string getDescription();
-        int getNumofPages();
+        string getNumofPages();
         void setTitle(string _title);
         void setAuthor(string _author);
         void setDescription(string _description);
-        void setNumofPages(int _numOfPages);
+        void setNumofPages(string _numOfPages);
         void displayBook();
-        bool borrowed;
-        bool returned;
+        string borrowed;
+        string returned;
 
     protected:
 
@@ -29,7 +29,8 @@ class Book
         string title;
         string author;
         string description;
-        int numOfPages;
+        string numOfPages;
+        int size;
 
 };
 
