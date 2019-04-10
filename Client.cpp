@@ -56,38 +56,14 @@ bool Client::Login(string _name, string _password)
     }
 }
 
-void Client::Logout(string, string)
+void Client::Logout()
 {
     return;
 }
 
 
-void Client::borrowBook(Book books[], string title)
-{
-    for (int i = 0; i < 100; i++)
-    {
-        if (books[i].getTitle() == title)
-        {
-            books[i].borrowed = 1;
-            return;
-        }
-        else
-        {
-            cout << "This book was not found. " << endl;
-        }
-    }
-}
 
 
-void Client::returnBook(Book books[], string title)
-{
-    for (int i = 0; i < 100; i++)
-    {
-        if (books[i].getTitle() == title)
-        {
-            books[i].returned = 1;
-            books[i].borrowed = 0;
-        }
-    }
-}
+
+
 

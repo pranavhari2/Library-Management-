@@ -9,7 +9,7 @@ class Book
         Book();
         virtual ~Book();
         Book(string, string, string, int);
-        Book(string, string, string, int, bool, bool);
+       // Book(string, string, string, int, bool, bool);
         string getTitle();
         string getAuthor();
         string getDescription();
@@ -30,7 +30,6 @@ class Book
         string author;
         string description;
         int numOfPages;
-        int size;
 
 };
 

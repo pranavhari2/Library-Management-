@@ -9,16 +9,21 @@ class Library
     public:
         Library();
         virtual ~Library();
-        void AddBook();
-        void DeleteBook(Book[],string);
-        void ModifyBook(Book[]);
-        void uploadBooks(Book[]);
+        void AddBook(int&);//works
+        void DeleteBook(string);//works
+        void ModifyBookName(string , string);
+        void ModifyBookAuth(string , string);
+        void ModifyBookDesc(string , string);
+        void downloadBooks();//works
+        void uploadBooks();
         void ClientMenu();
         void LibrarianMenu();
-        void searchBook(Book[], string);
-        string searchBook(string);
-        void examineLibrary();
+        void searchBook(string);
+        void examineLibrary();//works
+        void borrowBook(string);//works
+        void returnBook(string);//works
         Book books[100];
+        int _size = 1;
 
     protected:
 
